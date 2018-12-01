@@ -1,9 +1,9 @@
 'use strict';
 
-var appInfo = {
-    title: 'React.js',
-    subtitle: 'the best framework to create apps.',
-    apps: ['App 1', 'App 2', 'App 3']
+var app = {
+    title: 'Indecision App',
+    subtitle: 'Put your life in the hands of a computer',
+    options: ['One', 'Two']
 };
 
 var template = React.createElement(
@@ -12,32 +12,37 @@ var template = React.createElement(
     React.createElement(
         'h1',
         null,
-        appInfo.title
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        'p',
+        null,
+        app.subtitle
     ),
     React.createElement(
         'p',
         null,
-        appInfo.subtitle
-    ),
-    React.createElement(
-        'ul',
-        null,
-        appInfo.apps.map(function (item) {
-            return React.createElement(
-                'li',
-                { key: item },
-                item
-            );
-        })
+        app.options.length > 0 ? 'Here are your options:' : 'No options.'
     )
 );
 
 // EXERCISE:
 
 var user = {
-    name: 'Mike',
-    age: 25,
-    location: 'Uk'
+    name: 'Iulian',
+    age: 34,
+    location: 'Cumbria - Uk'
+};
+
+var getLocation = function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location
+        );
+    }
 };
 
 var template2 = React.createElement(
@@ -46,20 +51,15 @@ var template2 = React.createElement(
     React.createElement(
         'h1',
         null,
-        user.name.toUpperCase() + '!'
+        user.name ? user.name : 'Anonymous'
     ),
-    React.createElement(
+    user.age && user.age > 18 && React.createElement(
         'p',
         null,
         'Age: ',
         user.age
     ),
-    React.createElement(
-        'p',
-        null,
-        'Location: ',
-        user.location
-    )
+    getLocation(user.location)
 );
 
 var appRoute = document.getElementById('appRoute');
