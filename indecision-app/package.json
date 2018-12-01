@@ -1,0 +1,17 @@
+{
+  "name": "indecision-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
+  },
+  "author": "Iulian Carnaru",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1"
+  }
+}
