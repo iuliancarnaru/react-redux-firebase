@@ -26,42 +26,43 @@ var template = React.createElement(
     )
 );
 
-// EXERCISE:
+var count = 0;
 
-var user = {
-    name: 'Iulian',
-    age: 34,
-    location: 'Cumbria - Uk'
+var addOne = function addOne() {
+    console.log('addOne');
+};
+var minusOne = function minusOne() {
+    console.log('minusOne');
+};
+var reset = function reset() {
+    console.log('reset');
 };
 
-var getLocation = function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            'p',
-            null,
-            'Location: ',
-            location
-        );
-    }
-};
-
-var template2 = React.createElement(
+var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        user.name ? user.name : 'Anonymous'
+        'Count: ',
+        count
     ),
-    user.age && user.age > 18 && React.createElement(
-        'p',
-        null,
-        'Age: ',
-        user.age
+    React.createElement(
+        'button',
+        { onClick: addOne },
+        '+1'
     ),
-    getLocation(user.location)
+    React.createElement(
+        'button',
+        { onClick: minusOne },
+        '-1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: reset },
+        'reset'
+    )
 );
 
 var appRoute = document.getElementById('appRoute');
-
-ReactDOM.render(template, appRoute);
+ReactDOM.render(templateTwo, appRoute);

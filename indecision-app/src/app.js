@@ -14,29 +14,28 @@ const template = (
     </div>
 );
 
-// EXERCISE:
+let count = 0;
 
-const user = {
-    name: 'Iulian',
-    age: 34,
-    location: 'Cumbria - Uk'
+const addOne = () => {
+    console.log('addOne');
+};
+const minusOne = () => {
+    console.log('minusOne');
+};
+const reset = () => {
+    console.log('reset');
 };
 
-const getLocation = (location) => {
-    if (location) {
-        return <p>Location: {location}</p>;
-    }
-}
-
-const template2 = (
+const templateTwo = (
     <div>
-        <h1>{user.name ? user.name : 'Anonymous'}</h1>
-        {(user.age && user.age > 18) && <p>Age: {user.age}</p>}
-        {getLocation(user.location)}
+        <h1>Count: {count}</h1>
+        <button onClick={addOne}>+1</button>
+        <button onClick={minusOne}>-1</button>
+        <button onClick={reset}>reset</button>
     </div>
 );
 
-const appRoute = document.getElementById('appRoute');
 
-ReactDOM.render(template, appRoute);
+const appRoute = document.getElementById('appRoute');
+ReactDOM.render(templateTwo, appRoute);
 
