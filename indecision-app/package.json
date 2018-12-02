@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "babel src/visibility.js --out-file=public/scripts/app.js --presets=env,react --watch"
+    "dev": "babel src/app.js --out-file=public/scripts/app.js --presets=env,react --watch"
   },
   "author": "Iulian Carnaru",
   "license": "ISC",
