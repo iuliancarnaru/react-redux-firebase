@@ -1,68 +1,78 @@
 'use strict';
 
+/* 
+
+React dom elements
+React dom events
+e = event
+preventDefault - prevent full page refresh
+
+*/
+
 var app = {
     title: 'Indecision App',
     subtitle: 'Put your life in the hands of a computer',
-    options: ['One', 'Two']
+    options: []
 };
 
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        app.title
-    ),
-    app.subtitle && React.createElement(
-        'p',
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        'p',
-        null,
-        app.options.length > 0 ? 'Here are your options:' : 'No options.'
-    )
-);
+var onFormSubmit = function onFormSubmit(e) {
+    e.preventDefault();
 
-var count = 0;
+    // get the value that user type
+    var option = e.target.elements.option.value;
 
-var addOne = function addOne() {
-    console.log('addOne');
-};
-var minusOne = function minusOne() {
-    console.log('minusOne');
-};
-var reset = function reset() {
-    console.log('reset');
+    //check if there is any option
+    if (option) {
+        app.options.push(option);
+
+        //clear the input
+        e.target.elements.option.value = '';
+
+        //render the new data
+        renderApp();
+    }
 };
 
-var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
+var renderApp = function renderApp() {
+    var template = React.createElement(
+        'div',
         null,
-        'Count: ',
-        count
-    ),
-    React.createElement(
-        'button',
-        { onClick: addOne },
-        '+1'
-    ),
-    React.createElement(
-        'button',
-        { onClick: minusOne },
-        '-1'
-    ),
-    React.createElement(
-        'button',
-        { onClick: reset },
-        'reset'
-    )
-);
+        React.createElement(
+            'h1',
+            null,
+            app.title
+        ),
+        app.subtitle && React.createElement(
+            'p',
+            null,
+            app.subtitle
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.options.length > 0 ? 'Here are your options:' : 'No options.'
+        ),
+        React.createElement(
+            'p',
+            null,
+            'Array length: ',
+            app.options.length
+        ),
+        React.createElement(
+            'form',
+            { onSubmit: onFormSubmit },
+            React.createElement('input', { type: 'text', name: 'option' }),
+            React.createElement(
+                'button',
+                null,
+                'Add option'
+            )
+        )
+    );
+
+    ReactDOM.render(template, appRoute);
+};
 
 var appRoute = document.getElementById('appRoute');
-ReactDOM.render(templateTwo, appRoute);
+
+renderApp();

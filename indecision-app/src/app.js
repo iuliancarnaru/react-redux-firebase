@@ -1,41 +1,57 @@
 
+/* 
+
+React dom elements
+React dom events
+e = event
+preventDefault - prevent full page refresh
+
+*/
+
 
 const app = {
     title: 'Indecision App',
     subtitle: 'Put your life in the hands of a computer',
-    options: ['One', 'Two']
+    options: []
 }
 
-const template = (
-    <div>
-        <h1>{app.title}</h1>
-        {app.subtitle && <p>{app.subtitle}</p>}
-        <p>{(app.options.length > 0) ? 'Here are your options:' : 'No options.'}</p>
-    </div>
-);
+const onFormSubmit = (e) => {
+    e.preventDefault();
 
-let count = 0;
+    // get the value that user type
+    const option = e.target.elements.option.value;
 
-const addOne = () => {
-    console.log('addOne');
-};
-const minusOne = () => {
-    console.log('minusOne');
-};
-const reset = () => {
-    console.log('reset');
-};
+    //check if there is any option
+    if (option) {
+        app.options.push(option);
 
-const templateTwo = (
-    <div>
-        <h1>Count: {count}</h1>
-        <button onClick={addOne}>+1</button>
-        <button onClick={minusOne}>-1</button>
-        <button onClick={reset}>reset</button>
-    </div>
-);
+        //clear the input
+        e.target.elements.option.value = '';
 
+        //render the new data
+        renderApp();
+    }
+}
+
+const renderApp = () => {
+    const template = (
+        <div>
+            <h1>{app.title}</h1>
+            {app.subtitle && <p>{app.subtitle}</p>}
+            <p>{(app.options.length > 0) ? 'Here are your options:' : 'No options.'}</p>
+            <p>Array length: {app.options.length}</p>
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option"/>
+                <button>Add option</button>
+            </form>
+        </div>
+    );
+
+    ReactDOM.render(template, appRoute);
+}
 
 const appRoute = document.getElementById('appRoute');
-ReactDOM.render(templateTwo, appRoute);
+
+renderApp();
+
 
