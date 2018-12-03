@@ -15,11 +15,7 @@ class IndecisionApp extends React.Component {
     }
 
     handleDeleteOptions() {
-        this.setState(() => {
-            return {
-                options: []
-            };
-        });
+        this.setState(() => ({ options: [] }));
     }
 
     handlePick() {
@@ -36,23 +32,16 @@ class IndecisionApp extends React.Component {
             return 'This option already exists';
         }
 
-        this.setState((prevState) => {
-            return {
-                // options: prevState.options.concat(option)
-                options: [...prevState.options, option]
-            }
-        })
+        this.setState((prevState) => ({ options: [...prevState.options, option] }));
     }
 
     render() {
 
-        const title="Indecision App";
         const subtitle = "put your life in the hands of a computer";
 
         return (
             <div>
                 <Header 
-                    title={title} 
                     subtitle={subtitle}
                 />
                 <Action 
@@ -75,9 +64,13 @@ const Header = (props) => {
     return (
         <div>
             <h1>{props.title}</h1>
-            <h2>{props.subtitle}</h2>
+            {props.subtitle && <h2>{props.subtitle}</h2>}
         </div>
     );
+}
+
+Header.defaultProps = {
+    title: 'Indecision App'
 }
 
 const Action = (props) => {
@@ -123,10 +116,8 @@ class AddOption extends React.Component {
         // trim remove white spaces from before and after the text
         const option = e.target.elements.option.value.trim();
         const error = this.props.handleAddOption(option);
-        
-        this.setState(() => {
-            return { error };
-        });
+
+        this.setState(() => ({ error }));
 
         // clear the input text after submit
         e.target.elements.option.value = '';
