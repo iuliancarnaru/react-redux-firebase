@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 class AddOption extends React.Component {
@@ -11,13 +12,11 @@ class AddOption extends React.Component {
 
     handleAddOption(e) {
         e.preventDefault();
-        // trim remove white spaces from before and after the text
         const option = e.target.elements.option.value.trim();
         const error = this.props.handleAddOption(option);
 
         this.setState(() => ({ error }));
 
-        // clear the input if it was no errors
         if (!error) {
             e.target.elements.option.value = '';
         }
@@ -37,3 +36,4 @@ class AddOption extends React.Component {
 }
 
 export default AddOption;
+

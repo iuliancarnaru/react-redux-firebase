@@ -1,13 +1,10 @@
+
 import React from 'react';
 
 import AddOption from './AddOption';
 import Options from './Options';
 import Action from './Action';
 import Header from './Header';
-
-
-// class based component - manage complex states
-// stateless functional component - presentation of information
 
 class IndecisionApp extends React.Component {
     constructor(props) {
@@ -22,17 +19,10 @@ class IndecisionApp extends React.Component {
         }
     }
 
-    // lifecycle methods only work on class based component
-    // (there is no lifecycle for stateless components)
-    // localStorage only works with string data (JSON) - JSON.stringify() / JSON.parse()
-
     componentDidMount() {
-        // check if is valid JSON data
         try {
             const json = localStorage.getItem('options');
             const options = JSON.parse(json);
-    
-            //check if are any data in local storage
             if (options) {
                 this.setState(() => ({ options }));
             }
@@ -42,19 +32,16 @@ class IndecisionApp extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // update the component if previous state is different than current one
         if (prevState.options.length !== this.state.options.length) {
             const json = JSON.stringify(this.state.options)
             localStorage.setItem('options', json);
         }
     }
 
-    // remove all options
     handleDeleteOptions() {
         this.setState(() => ({ options: [] }));
     }
 
-    //remove individual option
     handleDeleteOption(optionToRemove) {
         this.setState((prevState) => ({ 
             options: prevState.options.filter((option) => optionToRemove !== option )
@@ -68,7 +55,6 @@ class IndecisionApp extends React.Component {
     }
 
     handleAddOption(option) {
-        // form validation
         if (!option) {
             return 'Enter valid value to add items';
         } else if (this.state.options.indexOf(option) > -1) {
@@ -105,3 +91,4 @@ class IndecisionApp extends React.Component {
 }
 
 export default IndecisionApp;
+
