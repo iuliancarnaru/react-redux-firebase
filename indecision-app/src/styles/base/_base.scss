@@ -22,4 +22,14 @@ body {
     line-height: 1.7;
     color: #555;
     overflow-x: hidden;
+    font-size: $m-size;
+    background: $dark-blue;
+}
+
+button {
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: default;
 }
