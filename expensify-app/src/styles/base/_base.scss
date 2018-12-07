@@ -11,7 +11,7 @@
 }
 
 html {
-    font-size: 62.5%; 
+    font-size: 62.5%;
     /* 100% = 16px (root font size) 10/16 = 62.5% */
 }
 
@@ -31,4 +31,30 @@ button {
 
 button:disabled {
     cursor: default;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    margin-bottom: 2rem;
+}
+
+ul li a:link,
+ul li a:visited {
+    text-decoration: none;
+    margin-right: 1rem;
+    display: inline-block;
+    border-bottom: .1rem solid transparent;
+    padding: .2rem .6rem;
+    color: grey;
+    transition: all .2s;
+}
+
+ul li a:hover,
+ul li a:active {
+    border-bottom: .1rem solid grey;
+}
+
+.is-active {
+    font-weight: bold;
 }
