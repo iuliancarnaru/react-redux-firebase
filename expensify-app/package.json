@@ -6,7 +6,8 @@
   "scripts": {
     "live": "live-server public",
     "build": "webpack",
-    "dev": "webpack-dev-server"
+    "dev": "webpack-dev-server",
+    "test": "jest"
   },
   "author": "Iulian Carnaru",
   "license": "ISC",
@@ -19,6 +20,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "css-loader": "^1.0.1",
+    "jest": "^23.6.0",
     "live-server": "^1.2.1",
     "moment": "^2.22.2",
     "node-sass": "^4.10.0",
