@@ -13,8 +13,8 @@ import configureStore from './store/configureStore';
 
 const store = configureStore();
 
-store.dispatch(addExpense({ description: 'Water bill'}));
-store.dispatch(addExpense({ description: 'Gass bill'}));
+store.dispatch(addExpense({ description: 'Water bill', amount: 4500}));
+store.dispatch(addExpense({ description: 'Gass bill', amount: 2000}));
 store.dispatch(setTextFilter('water'));
 
 const state = store.getState();
