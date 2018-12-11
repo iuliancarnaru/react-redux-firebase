@@ -14,7 +14,8 @@ import configureStore from './store/configureStore';
 const store = configureStore();
 
 store.dispatch(addExpense({ description: 'Water bill', amount: 4500}));
-store.dispatch(addExpense({ description: 'Gass bill', amount: 2000}));
+store.dispatch(addExpense({ description: 'Gass bill', amount: 2000, createdAt: 1000}));
+store.dispatch(addExpense({ description: 'Rent', amount: 1950}));
 store.dispatch(setTextFilter('water'));
 
 const state = store.getState();
