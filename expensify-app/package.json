@@ -7,7 +7,7 @@
     "live": "live-server public",
     "build": "webpack",
     "dev": "webpack-dev-server",
-    "test": "jest --watch"
+    "test": "jest --config=jest.config.json --watch"
   },
   "author": "Iulian Carnaru",
   "license": "ISC",
@@ -22,11 +22,14 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "css-loader": "^1.0.1",
+    "enzyme": "^3.8.0",
+    "enzyme-adapter-react-16": "^1.7.1",
     "jest": "^23.6.0",
     "live-server": "^1.2.1",
     "moment": "^2.22.2",
     "node-sass": "^4.10.0",
     "normalize.css": "^8.0.1",
+    "raf": "^3.4.1",
     "react": "^16.6.3",
     "react-addons-shallow-compare": "^15.6.2",
     "react-dates": "^18.3.0",
