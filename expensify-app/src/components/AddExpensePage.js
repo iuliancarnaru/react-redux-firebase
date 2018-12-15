@@ -5,7 +5,7 @@ import { addExpense } from '../actions/expenses';
 
 export class AddExpensePage extends Component {
     onSubmit = (expense) => {
-        this.props.onSubmit(expense);
+        this.props.addExpense(expense);
         this.props.history.push('/');
     }
 
@@ -16,12 +16,12 @@ export class AddExpensePage extends Component {
             <ExpenseForm onSubmit={this.onSubmit}/>
         </div>
         );
-    }
-}
+    };
+};
 
 
 const mapDispatchToProps = (dispatch) => ({
-        onSubmit: (expense) => dispatch(addExpense(expense))
+        addExpense: (expense) => dispatch(addExpense(expense))
 });
 
 export default connect(undefined, mapDispatchToProps)(AddExpensePage);
