@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "live": "live-server public",
-    "build-dev": "webpack",
-    "build-prod": "webpack -p --env production",
-    "dev": "webpack-dev-server",
-    "test": "jest --config=jest.config.json --watch"
+    "serve": "live-server public",
+    "build:dev": "webpack",
+    "build:prod": "webpack -p --env production",
+    "dev-server": "webpack-dev-server",
+    "test": "jest --config=jest.config.json --watch",
+    "start": "node/server/server.js",
+    "heroku-postbuild":"npm run build:prod"
   },
   "author": "Iulian Carnaru",
   "license": "ISC",
