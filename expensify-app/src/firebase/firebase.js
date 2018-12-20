@@ -11,7 +11,15 @@ const config = {
 
 firebase.initializeApp(config);
 
-firebase.database().ref().set({
-    name: 'Iulian Carnaru'
+const database = firebase.database();
+
+database.ref().set({
+    name: 'Iulian Carnaru',
+    age: 34,
+    isSingle: false,
+    location: {
+        city: 'Windermere',
+        country: 'Uk'
+    }
 });
 
