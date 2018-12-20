@@ -16,10 +16,34 @@ const database = firebase.database();
 database.ref().set({
     name: 'Iulian Carnaru',
     age: 34,
-    isSingle: false,
+    job: {
+        title : 'web designer',
+        company: 'Google'},
+    stressLevel: 6,
     location: {
         city: 'Windermere',
         country: 'Uk'
     }
+}).then(() => {
+    console.log('Data is saved')
+}).catch((error) => {
+    console.log('This failed', error);
 });
+
+// update only on the root level
+database.ref().update({
+    stressLevel: 9,
+    'job/company': 'Amazon',
+    'location/city': 'Seattle'
+})
+
+// database.ref().remove().
+//     then(() => {
+//         console.log('Data was removed')
+//     }).catch((error) => {
+//         console.log('This failed', error);
+//     })
+
+// // equivalent to remove
+// database.ref('isSingle').set(null);
 
