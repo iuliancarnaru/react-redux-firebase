@@ -13,29 +13,47 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-database.ref().set({
-    name: 'Iulian Carnaru',
-    age: 34,
-    job: {
-        title : 'web designer',
-        company: 'Google'},
-    stressLevel: 6,
-    location: {
-        city: 'Windermere',
-        country: 'Uk'
-    }
-}).then(() => {
-    console.log('Data is saved')
-}).catch((error) => {
-    console.log('This failed', error);
+// fetching data from database
+// database.ref('location/city')
+//     .once('value')
+//     .then((snapshot) => {
+//         const val = snapshot.val();
+//         console.log(val);
+//     }).catch((e) => {
+//         console.log('Something went wrong!', e);
+//     });
+
+database.ref().on('value', (snapshot) => {
+    console.log(snapshot.val());
 });
 
-// update only on the root level
-database.ref().update({
-    stressLevel: 9,
-    'job/company': 'Amazon',
-    'location/city': 'Seattle'
-})
+// database.ref().set({
+//     name: 'Iulian Carnaru',
+//     age: 34,
+//     job: {
+//         title : 'web designer',
+//         company: 'Google'},
+//     stressLevel: 6,
+//     location: {
+//         city: 'Windermere',
+//         country: 'Uk'
+//     }
+// }).then(() => {
+//     console.log('Data is saved')
+// }).catch((error) => {
+//     console.log('This failed', error);
+// });
+
+// // update only on the root level
+// database.ref().update({
+//     stressLevel: 9,
+//     'job/company': 'Amazon',
+//     'location/city': 'Seattle'
+// }).then(() => {
+//     console.log('Data is updated')
+// }).catch((error) => {
+//     console.log('This failed', error);
+// });
 
 // database.ref().remove().
 //     then(() => {
