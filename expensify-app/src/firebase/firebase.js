@@ -13,6 +13,49 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
+database.ref('notes').push({
+    title: 'course topics',
+    body: 'react redux firebase'
+});
+
+// Firebase doesn't accept arrays, we have to rethink 
+
+// is not working:
+
+// const notes = [
+//     {
+//         id: 'abc212',
+//         'title': 'First note',
+//         'body': 'My first note'
+//     },
+//     {
+//         id: 'abc213',
+//         'title': 'Second note',
+//         'body': 'My second note'
+//     },
+// ];
+
+// // new way to work around without arrays
+
+// const firabaseNotes = {
+//     notes: {
+//         abc212: {
+//             'title': 'First note',
+//             'body': 'My first note'
+//         },
+//         abc213: {
+//             'title': 'Second note',
+//             'body': 'My second note'
+//         }
+//     }
+// }
+
+
+// database.ref().on('value', (snapshot) => {
+//     const val = snapshot.val();
+//     console.log(`${val.name} is ${val.job.title} at ${val.job.company}`)
+// })
+
 // fetching data from database
 // database.ref('location/city')
 //     .once('value')
@@ -23,21 +66,24 @@ const database = firebase.database();
 //         console.log('Something went wrong!', e);
 //     });
 
-database.ref().on('value', (snapshot) => {
-    console.log(snapshot.val());
-});
 
-setTimeout(() => {
-    database.ref('age').set(35);
-}, 3500);
+// const onValueChange = database.ref().on('value', (snapshot) => {
+//     console.log(snapshot.val());
+// }, (e) => {
+//     console.log('Error on data fetching', e);
+// });
 
-setTimeout(() => {
-    database.ref().off();
-}, 7000);
+// setTimeout(() => {
+//     database.ref('age').set(35);
+// }, 3500);
 
-setTimeout(() => {
-    database.ref('age').set(12);
-}, 10500);
+// setTimeout(() => {
+//     database.ref().off(onValueChange);
+// }, 7000);
+
+// setTimeout(() => {
+//     database.ref('age').set(12);
+// }, 10500);
 
 
 
