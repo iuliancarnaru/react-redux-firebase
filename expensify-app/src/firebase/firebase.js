@@ -27,6 +27,20 @@ database.ref().on('value', (snapshot) => {
     console.log(snapshot.val());
 });
 
+setTimeout(() => {
+    database.ref('age').set(35);
+}, 3500);
+
+setTimeout(() => {
+    database.ref().off();
+}, 7000);
+
+setTimeout(() => {
+    database.ref('age').set(12);
+}, 10500);
+
+
+
 // database.ref().set({
 //     name: 'Iulian Carnaru',
 //     age: 34,
