@@ -13,10 +13,72 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
-database.ref('notes').push({
-    title: 'course topics',
-    body: 'react redux firebase'
+// on events: 'value', 'child_remove', 'child_changed', 'child_added'
+database.ref('expenses').on('child_removed', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
 });
+
+database.ref('expenses').on('child_changed', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+// get called for all existing childrens as well for the new ones
+database.ref('expenses').on('child_added', (snapshot) => {
+    console.log(snapshot.key, snapshot.val());
+});
+
+
+// snapshot methods: val, forEach
+
+// once supports promises
+// database.ref('expenses')
+//     .once('value')
+//     .then((snapshot) => {
+//         const expenses = [];
+//         snapshot.forEach((childSnapshot) => {
+//             expenses.push({
+//                 id: childSnapshot.key,
+//                 ...childSnapshot.val()
+//             });
+//         });
+
+//         console.log(expenses);
+//     })
+//     .catch((e) => {
+//         console.log('Error', e)
+//     });
+
+
+//on doesn't support promises
+// database.ref('expenses').on('value', (snapshot) => {
+//     const expenses = [];
+//     snapshot.forEach((childSnapshot) => {
+//         expenses.push({
+//             id: childSnapshot.key,
+//             ...childSnapshot.val()
+//         });
+//     });
+//     console.log(expenses);
+// });
+
+// database.ref('expenses').push({
+//     description: 'rent',
+//     note: 'rent december',
+//     amount: 54500,
+//     createdAt: 0
+// });
+
+
+// database.ref('notes/-LUALJv-hDINzlzhfASA').update({
+//     body: 'Buy food'
+// });
+
+// database.ref('notes/-LUALl4luGUzPzwYI_AN').remove();
+
+// database.ref('notes').push({
+//     title: 'course topics',
+//     body: 'react redux firebase'
+// });
 
 // Firebase doesn't accept arrays, we have to rethink 
 
