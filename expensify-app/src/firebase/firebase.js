@@ -148,8 +148,6 @@ database.ref('expenses').on('child_added', (snapshot) => {
 //     database.ref('age').set(12);
 // }, 10500);
 
-
-
 // database.ref().set({
 //     name: 'Iulian Carnaru',
 //     age: 34,
@@ -187,4 +185,3 @@ database.ref('expenses').on('child_added', (snapshot) => {
 
 // // equivalent to remove
 // database.ref('isSingle').set(null);
-
