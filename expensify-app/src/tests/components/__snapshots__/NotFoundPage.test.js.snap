@@ -2,12 +2,12 @@
 
 exports[`should render NotFoundPage correctly 1`] = `
 <div>
-  404 Sorry this page doesn't exist! - Go back to 
+  404 - 
   <Link
     replace={false}
     to="/"
   >
-    home page
+    Go home
   </Link>
 </div>
 `;
